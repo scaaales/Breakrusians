@@ -67,20 +67,60 @@
 		B30B8A762A67E6BB006ECFED /* Breakrusians */ = {
 			isa = PBXGroup;
 			children = (
-				B30B8A772A67E6BB006ECFED /* AppDelegate.swift */,
-				B30B8A792A67E6BB006ECFED /* GameScene.sks */,
-				B30B8A7D2A67E6BB006ECFED /* GameScene.swift */,
-				B30B8A8E2A682D8A006ECFED /* Paddle.swift */,
-				B3F50C072A6AC3F800021EE5 /* Ball.swift */,
-				B30B8A7F2A67E6BB006ECFED /* GameViewController.swift */,
-				B3F50C092A6AC40800021EE5 /* CategoryBitmask.swift */,
-				B30B8A942A682EE7006ECFED /* Bundle+gifFrames.swift */,
-				B30B8A812A67E6BB006ECFED /* Main.storyboard */,
-				B30B8A922A682EC8006ECFED /* ukrainian-flag.gif */,
-				B30B8A842A67E6BC006ECFED /* Assets.xcassets */,
-				B30B8A862A67E6BC006ECFED /* LaunchScreen.storyboard */,
+				B3F50C0F2A6AC70700021EE5 /* App */,
+				B3F50C0E2A6AC6F800021EE5 /* Assets */,
+				B3F50C0C2A6AC6C100021EE5 /* Game */,
+				B3F50C0D2A6AC6DA00021EE5 /* Extensions */,
 			);
 			path = Breakrusians;
+			sourceTree = "<group>";
+		};
+		B3F50C0B2A6AC6B600021EE5 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B3F50C072A6AC3F800021EE5 /* Ball.swift */,
+				B30B8A8E2A682D8A006ECFED /* Paddle.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		B3F50C0C2A6AC6C100021EE5 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B3F50C0B2A6AC6B600021EE5 /* Objects */,
+				B3F50C092A6AC40800021EE5 /* CategoryBitmask.swift */,
+				B30B8A7D2A67E6BB006ECFED /* GameScene.swift */,
+				B30B8A792A67E6BB006ECFED /* GameScene.sks */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		B3F50C0D2A6AC6DA00021EE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B30B8A942A682EE7006ECFED /* Bundle+gifFrames.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B3F50C0E2A6AC6F800021EE5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B30B8A842A67E6BC006ECFED /* Assets.xcassets */,
+				B30B8A922A682EC8006ECFED /* ukrainian-flag.gif */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		B3F50C0F2A6AC70700021EE5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B30B8A772A67E6BB006ECFED /* AppDelegate.swift */,
+				B30B8A7F2A67E6BB006ECFED /* GameViewController.swift */,
+				B30B8A812A67E6BB006ECFED /* Main.storyboard */,
+				B30B8A862A67E6BC006ECFED /* LaunchScreen.storyboard */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
