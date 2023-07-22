@@ -19,6 +19,11 @@
 		B30B8A952A682EE7006ECFED /* Bundle+gifFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30B8A942A682EE7006ECFED /* Bundle+gifFrames.swift */; };
 		B3F50C082A6AC3F800021EE5 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F50C072A6AC3F800021EE5 /* Ball.swift */; };
 		B3F50C0A2A6AC40800021EE5 /* CategoryBitmask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F50C092A6AC40800021EE5 /* CategoryBitmask.swift */; };
+		B3F50C152A6ACF7500021EE5 /* kremlin.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3F50C142A6ACF7500021EE5 /* kremlin.sks */; };
+		B3F50C182A6ADDA500021EE5 /* LevelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F50C172A6ADDA500021EE5 /* LevelNode.swift */; };
+		B3F50C1C2A6AF4D300021EE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F50C1A2A6AF4D300021EE5 /* Assets.xcassets */; };
+		B3F50C1E2A6AF5DA00021EE5 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3F50C1D2A6AF5DA00021EE5 /* Explosion.sks */; };
+		B3F50C202A6AF8FB00021EE5 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B3F50C1F2A6AF8FB00021EE5 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		B30B8A942A682EE7006ECFED /* Bundle+gifFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+gifFrames.swift"; sourceTree = "<group>"; };
 		B3F50C072A6AC3F800021EE5 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		B3F50C092A6AC40800021EE5 /* CategoryBitmask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBitmask.swift; sourceTree = "<group>"; };
+		B3F50C142A6ACF7500021EE5 /* kremlin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = kremlin.sks; sourceTree = "<group>"; };
+		B3F50C172A6ADDA500021EE5 /* LevelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelNode.swift; sourceTree = "<group>"; };
+		B3F50C1A2A6AF4D300021EE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3F50C1D2A6AF5DA00021EE5 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		B3F50C1F2A6AF8FB00021EE5 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,10 +97,13 @@
 		B3F50C0C2A6AC6C100021EE5 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				B3F50C162A6ADD8100021EE5 /* Levels */,
 				B3F50C0B2A6AC6B600021EE5 /* Objects */,
 				B3F50C092A6AC40800021EE5 /* CategoryBitmask.swift */,
 				B30B8A7D2A67E6BB006ECFED /* GameScene.swift */,
+				B3F50C1D2A6AF5DA00021EE5 /* Explosion.sks */,
 				B30B8A792A67E6BB006ECFED /* GameScene.sks */,
+				B3F50C1A2A6AF4D300021EE5 /* Assets.xcassets */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -107,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B30B8A842A67E6BC006ECFED /* Assets.xcassets */,
+				B3F50C1F2A6AF8FB00021EE5 /* spark.png */,
 				B30B8A922A682EC8006ECFED /* ukrainian-flag.gif */,
 			);
 			path = Assets;
@@ -121,6 +135,15 @@
 				B30B8A862A67E6BC006ECFED /* LaunchScreen.storyboard */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		B3F50C162A6ADD8100021EE5 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				B3F50C142A6ACF7500021EE5 /* kremlin.sks */,
+				B3F50C172A6ADDA500021EE5 /* LevelNode.swift */,
+			);
+			path = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +205,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B30B8A832A67E6BB006ECFED /* Main.storyboard in Resources */,
+				B3F50C202A6AF8FB00021EE5 /* spark.png in Resources */,
 				B30B8A7A2A67E6BB006ECFED /* GameScene.sks in Resources */,
 				B30B8A852A67E6BC006ECFED /* Assets.xcassets in Resources */,
+				B3F50C1E2A6AF5DA00021EE5 /* Explosion.sks in Resources */,
 				B30B8A882A67E6BC006ECFED /* LaunchScreen.storyboard in Resources */,
+				B3F50C152A6ACF7500021EE5 /* kremlin.sks in Resources */,
+				B3F50C1C2A6AF4D300021EE5 /* Assets.xcassets in Resources */,
 				B30B8A932A682EC8006ECFED /* ukrainian-flag.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F50C082A6AC3F800021EE5 /* Ball.swift in Sources */,
+				B3F50C182A6ADDA500021EE5 /* LevelNode.swift in Sources */,
 				B30B8A7E2A67E6BB006ECFED /* GameScene.swift in Sources */,
 				B30B8A952A682EE7006ECFED /* Bundle+gifFrames.swift in Sources */,
 				B30B8A8F2A682D8A006ECFED /* Paddle.swift in Sources */,

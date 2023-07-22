@@ -22,14 +22,9 @@ final class Ball: SKSpriteNode {
     }
 
     private func setupPhysics() {
-//        let radius = frame.height / 2
-//        let center = CGPoint(x: frame.maxX - radius, y: frame.maxY - radius)
+        physicsBody = .init(polygonFrom: .init(ellipseIn: frame, transform: nil))
 
-        let radius = frame.width / 2
-        let center = CGPoint.zero
-
-        physicsBody = .init(circleOfRadius: radius, center: center)
-
+        physicsBody?.allowsRotation = false
         physicsBody?.mass = 1
         physicsBody?.friction = 0
         physicsBody?.restitution = 1
@@ -37,7 +32,7 @@ final class Ball: SKSpriteNode {
         physicsBody?.angularDamping = 0
 
         physicsBody?.categoryBitMask = CategoryBitmask.ball
-        physicsBody?.contactTestBitMask = CategoryBitmask.paddle | CategoryBitmask.side
-        physicsBody?.collisionBitMask = CategoryBitmask.paddle | CategoryBitmask.side
+        physicsBody?.contactTestBitMask = CategoryBitmask.paddle | CategoryBitmask.side | CategoryBitmask.block
+        physicsBody?.collisionBitMask = CategoryBitmask.paddle | CategoryBitmask.side | CategoryBitmask.block
     }
 }

@@ -16,8 +16,11 @@ final class GameScene: SKScene {
     private var initialBallVelocity: CGVector?
     private var initialVelocityAngle: CGFloat?
 
-    private let paddle = Paddle()
+    private var level: LevelNode?
     private let ball = Ball()
+    private let paddle = Paddle()
+
+    private let explosionParticle = SKEmitterNode(fileNamed: "Explosion")
 
     private var isBallMoving = false
 
@@ -27,8 +30,12 @@ final class GameScene: SKScene {
         addChild(paddle)
 
         ball.zPosition = 2
-        ball.zRotation = .pi / 4
+        ball.zRotation = .pi / 2
         addChild(ball)
+
+        explosionParticle?.zPosition = 3
+
+        setupBlocks()
     }
 
     override func didChangeSize(_ oldSize: CGSize) {
@@ -88,6 +95,15 @@ final class GameScene: SKScene {
         }
     }
 
+    private func setupBlocks() {
+        guard let levelNode = LevelNode(fileNamed: "kremlin") else {
+            return
+        }
+        addChild(levelNode)
+
+        self.level = levelNode
+    }
+
     private func setupScreenEdges() {
         let screenBody = SKPhysicsBody(edgeLoopFrom: frame)
         self.physicsBody = screenBody
@@ -118,6 +134,17 @@ final class GameScene: SKScene {
 
     private func setupPositions() {
         paddle.position = .init(x: .zero, y: -size.height / 2 + safeArea.bottom + paddle.size.height / 2)
+        if let level {
+            level.setScale(1)
+            let desiredSize = level.calculateAccumulatedFrame().size
+
+            let scaleToFitWidth = size.width / desiredSize.width
+
+            level.setScale(scaleToFitWidth)
+
+            let y = (size.height - level.calculateAccumulatedFrame().size.height) / 2 - safeArea.top
+            level.position = CGPoint(x: .zero, y: y)
+        }
         guard !isBallMoving else {
             return
         }
@@ -129,32 +156,55 @@ extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
 
-        // Ball contacts paddle
-        if contactMask == (CategoryBitmask.ball | CategoryBitmask.paddle) {
-            ballBouncedOffPaddle()
-        }
+        bounceBall()
 
-        // Ball contacts side of the screen
-        if contactMask == (CategoryBitmask.ball | CategoryBitmask.side) {
-            ballBouncedOffSide(contact: contact)
+        if contactMask == (CategoryBitmask.ball | CategoryBitmask.block) {
+            handleBlockCollision(contact: contact)
         }
-    }
-
-    // Ball bounced off the paddle
-    func ballBouncedOffPaddle() {
-        // Add any bounce behavior you want here
-        // For example, you can change the ball's velocity or direction
     }
 
     // Ball bounced off the side of the screen
-    func ballBouncedOffSide(contact: SKPhysicsContact) {
-        guard let physicsBody = ball.physicsBody else {
+    private func bounceBall() {
+        guard isBallMoving, let physicsBody = ball.physicsBody else {
             return
         }
 
         let velocity = physicsBody.velocity
         let velocityAngle = atan2(velocity.dy, velocity.dx)
 
-        ball.run(.rotate(toAngle: velocityAngle, duration: 0))
+        ball.run(.rotate(toAngle: velocityAngle, duration: 0.05))
+    }
+
+    private func handleBlockCollision(contact: SKPhysicsContact) {
+        // Determine which node is the block and which is the ball
+        var blockNode: SKSpriteNode?
+
+        if contact.bodyA.categoryBitMask == CategoryBitmask.block {
+            blockNode = contact.bodyA.node as? SKSpriteNode
+        } else {
+            blockNode = contact.bodyB.node as? SKSpriteNode
+        }
+
+        // Handle block collision here
+        // For example, you can remove the block node from the scene
+        if let blockNode = blockNode {
+            showExplosion(at: blockNode.position)
+            level?.removeNode(blockNode)
+        }
+    }
+
+    private func showExplosion(at position: CGPoint) {
+        guard let explosionCopy = explosionParticle?.copy() as? SKEmitterNode, let level else {
+            return
+        }
+
+        let positionInScene = self.convert(position, from: level)
+
+        explosionCopy.position = positionInScene
+        addChild(explosionCopy)
+
+        // Remove the explosion after a short delay
+        let removeAction = SKAction.sequence([.wait(forDuration: 1), .removeFromParent()])
+        explosionCopy.run(removeAction)
     }
 }
